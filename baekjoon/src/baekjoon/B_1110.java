@@ -9,7 +9,7 @@ public class B_1110 {
 		
 		int left, right; // 왼쪽 자리 수와 오른쪽 자리 수
 		int sum; // 각 자리의 수를 더할 필드
-		int new_n = n; // 이어 붙여 만든 새로운 수
+		int new_n = n; // 새로운 수
 		int length = 0; // 사이클의 길이
 		while (true) {
 			left = new_n / 10;
