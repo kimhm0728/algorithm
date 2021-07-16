@@ -1,7 +1,7 @@
 package baekjoon;
 import java.util.*;
 
-public class B_1010 {
+public class B_1010_1 {
 	public static void main(String[] args) {
 		Scanner stdin = new Scanner(System.in);
 		int n = stdin.nextInt();
