@@ -2,7 +2,6 @@ package baekjoon;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 public class B_1003 {
 	static int[][] fib = new int[41][2];
