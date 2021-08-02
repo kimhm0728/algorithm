@@ -26,5 +26,4 @@ public class B_1037 {
 		}
 		System.out.println(N);
 	}
-
 }
