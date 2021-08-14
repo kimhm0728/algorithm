@@ -24,6 +24,7 @@ public class B_1260 {
 		System.out.println();
 		Arrays.fill(visited, 0);
 		BFS(V);
+		¾î¤À·À³»¤¿¤©¤¤¤·¤¾
 	}
 	static void DFS(int start) {
 		System.out.print(start+1+" ");
