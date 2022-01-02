@@ -1,4 +1,4 @@
-package baekjoon;
+package class1;
 import java.util.Arrays;
 import java.util.Scanner;
 
