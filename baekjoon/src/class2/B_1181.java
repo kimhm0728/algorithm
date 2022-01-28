@@ -20,7 +20,6 @@ public class B_1181 {
 					return s1.compareTo(s2); // 길이가 같은 경우 사전 순 정렬
 				else // 길이 별로 정렬
 					return s1.length() - s2.length();
-				
 			}
 		});
 		
