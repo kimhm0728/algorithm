@@ -6,8 +6,9 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class B_14226 {
-	private static int time[] = new int[1001];
+	private static boolean visit[][] = new boolean[2001][1001];
 	private static int S;
+	private static int min;
 	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
@@ -15,26 +16,42 @@ public class B_14226 {
 		S = Integer.parseInt(br.readLine());
 		
 		BFS();
-		System.out.println(time[S]);
+		System.out.println(min);
 	}
 	
 	private static void BFS() {
-		Queue<Integer> q = new LinkedList<>();
-		q.offer(1);
+		Queue<int[]> q = new LinkedList<>();
+		q.offer(new int[] {1, 0, 0});
+		visit[1][0] = true;
 		
 		while(!q.isEmpty()) {
-			int now = q.poll();
-			if(now == S)
-				return;
+			int[] now = q.poll();
 			
-			if(now * 2 > 0 && now * 2 < time.length && time[now * 2] == 0) {
-				q.offer(now * 2);
-				time[now * 2] = time[now] + 2;
+			int nowEmoti = now[0];
+			int nowClip = now[1];
+			int nowSec = now[2];
+			
+			if(nowEmoti == S) {
+				min = nowSec;
+				return;
 			}
 			
-			if(now - 1 > 0 && now - 1 < time.length && time[now - 1] == 0) {
-				q.offer(now - 1);
-				time[now - 1] = time[now] + 1;
+			// 복사
+			if(!visit[nowEmoti][nowEmoti]) {
+				visit[nowEmoti][nowEmoti] = true;
+				q.offer(new int[] {nowEmoti, nowEmoti, nowSec + 1});
+			}
+				
+			// 붙여넣기
+			if(nowEmoti + nowClip < 1001 &&!visit[nowEmoti + nowClip][nowClip]) {
+				visit[nowEmoti + nowClip][nowClip] = true;
+				q.offer(new int[] {nowEmoti + nowClip, nowClip, nowSec + 1});
+			}
+			
+			// 삭제
+			if(nowEmoti - 1 >= 0 && !visit[nowEmoti - 1][nowClip]) {
+				visit[nowEmoti - 1][nowClip] = true;
+				q.offer(new int[] {nowEmoti - 1, nowClip, nowSec + 1});
 			}
 			
 		}
