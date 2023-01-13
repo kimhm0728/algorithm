@@ -8,7 +8,7 @@ public class B_24955 {
 	static StringBuilder sb = new StringBuilder();
 	static long[] num;
 	static ArrayList<Integer>[] path;
-	static boolean[] visit;
+	//static boolean[] visit;
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -18,7 +18,7 @@ public class B_24955 {
 		int Q = Integer.parseInt(st.nextToken());
 		num = new long[N];
 		path = new ArrayList[N];
-		visit = new boolean[N];
+		//visit = new boolean[N];
 		
 		st = new StringTokenizer(br.readLine());
 		for(int i=0;i<N;i++) {
@@ -40,12 +40,36 @@ public class B_24955 {
 			int start = Integer.parseInt(st.nextToken()) - 1;
 			int end = Integer.parseInt(st.nextToken()) - 1;
 			
-			DFS(start, end, 0);
+			BFS(start, end, N);
 		}
 		
 		System.out.println(sb);
 	}
 	
+	static void BFS(int start, int end, int n) {
+		Queue<long[]> q = new LinkedList<>();
+		boolean[] visit = new boolean[n];
+		visit[start] = true;
+		q.offer(new long[] {start, num[start]});
+		
+		while(!q.isEmpty()) {
+			long[] now = q.poll();
+			
+			if(now[0] == end) {
+				sb.append(now[1]).append('\n');
+				return;
+			}
+			
+			for(int i : path[(int)now[0]]) {
+				if(visit[i])
+					continue;
+				visit[i] = true;
+				q.offer(new long[] {i, concat(now[1], num[i])});
+			}
+		}
+	}
+	
+	/*
 	static void DFS(int start, int end, long answer) {
 		visit[start] = true;
 		long temp = answer;
@@ -64,6 +88,7 @@ public class B_24955 {
 		visit[start] = false;
 		answer = temp;
 	}
+	*/
 
 	static long concat(long x, long y) {
 		long ret = x;
