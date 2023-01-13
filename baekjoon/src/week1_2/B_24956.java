@@ -15,6 +15,8 @@ public class B_24956 {
 		String str = br.readLine();
 		
 		ArrayList<Integer> list = new ArrayList<>();
+		
+		
 		for(int i=0;i<N;i++) 
 			if(str.charAt(i) == 'E')
 				list.add(i);
