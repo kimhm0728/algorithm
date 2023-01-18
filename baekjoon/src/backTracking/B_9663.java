@@ -3,21 +3,18 @@ package backTracking;
 import java.io.*;
 
 public class B_9663 {
-	static int[][] dir = {{-1, -1}, {1, -1}, {-1, 1}, {1, 1},
-			{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
 	static int answer = 0;
 	static int N;
-	static boolean [][] visit; // 0: 아무것도 x 1: 갈 수 없음
+	static int[] arr;
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
 		N = Integer.parseInt(br.readLine());
-		visit = new boolean[N][N];
+		arr = new int[N]; // 인덱스: 열, 값: 행
 		
 		DFS(0);
 		System.out.println(answer);
-		br.close();
 	}
 
 	static void DFS(int depth) {
@@ -27,34 +24,23 @@ public class B_9663 {
 		}
 		
 		for(int i=0;i<N;i++) {
-			for(int j=0;j<N;j++) {
-				if(visit[i][j])
-					continue;
-				
-				attackCheck(i, j, true);
+			arr[depth] = i;
+			
+			if(check(depth))
 				DFS(depth + 1);
-				attackCheck(i, j, false);
-			}
 		}
 	}
 	
-	// 서로 공격할 수 있는 퀸이 존재하면 true, 존재하지 않으면 false
-	static void attackCheck(int r, int c, boolean b) {
-		visit[r][c] = b;
-		
-		for(int i=0;i<dir.length;i++) {
-			int nextR = r;
-			int nextC = c;
+	// 서로 공격할 수 있는 퀸이 존재하는지 체크
+	static boolean check(int col) {
+		for(int i=0;i<col;i++) {
+			if(arr[col] == arr[i]) // 두 열이 같은 행에 존재하는 경우
+				return false;
 			
-			while(true) {
-				nextR += dir[i][0];
-				nextC += dir[i][1];
-				
-				if(nextR < 0 || nextR >= N || nextC < 0 || nextC >= N)
-					break;
-				
-				visit[nextR][nextC] = b;
-			}
+			else if(Math.abs(col - i) == Math.abs(arr[col] - arr[i])) // 대각선에 존재하는 경우
+				return false;
 		}
+		
+		return true;
 	}
 }
