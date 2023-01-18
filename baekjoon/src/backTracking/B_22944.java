@@ -56,14 +56,14 @@ public class B_22944 {
 				if(nextR < 0 || nextR >= N || nextC < 0   || nextC >= N)
 					continue;
 
-				if(board[nextR][nextC] == 'U') { // 우산이 있다면 우산을 듦
-					if(visit[nextR][nextC] >= now.h + D)
+				if(board[nextR][nextC] == 'U') { // 다음 위치에 우산이 있다면 우산을 듦
+					if(visit[nextR][nextC] >= now.h + D - 1)
 						continue;
-					visit[nextR][nextC] = D + now.h;
-					q.offer(new Rain(nextR, nextC, now.h, now.cnt + 1, true, D));
+					visit[nextR][nextC] = D - 1 + now.h;
+					q.offer(new Rain(nextR, nextC, now.h, now.cnt + 1, true, D - 1));
 				}
 				else if(board[nextR][nextC] == '.') { // 죽음의 비
-					if(now.umbrella) { // 우산이 있다면 우산 내구도 - 1
+					if(now.umbrella) { // 우산을 가지고 있다면 우산 내구도 - 1
 						if(visit[nextR][nextC] >= now.h + now.umbrellaH - 1) 
 							continue;
 						if(now.umbrellaH - 1 == 0) // 우산의 내구도가 0이라면 우산이 사라짐
