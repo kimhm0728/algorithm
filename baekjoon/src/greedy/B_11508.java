@@ -1,23 +1,25 @@
-package week1_1;
+package greedy;
 
 import java.util.*;
 import java.io.*;
 
-public class B_1758 {
+public class B_11508 {
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int N = Integer.parseInt(br.readLine());
 		
-		Integer[] tip = new Integer[N];
+		Integer[] cost = new Integer[N];
 		for(int i=0;i<N;i++)
-			tip[i] = Integer.parseInt(br.readLine());
-
-		Arrays.sort(tip, Collections.reverseOrder());
+			cost[i] = Integer.parseInt(br.readLine());
 		
-		long answer = 0;
+		Arrays.sort(cost, Collections.reverseOrder());
+		int cnt = 0;
+		int answer = 0;
+		
 		for(int i=0;i<N;i++)
-			answer += (tip[i] - i) > 0 ? (tip[i] - i) : 0;
+			if(++cnt % 3 != 0)
+				answer += cost[i];
 		
 		System.out.println(answer);
 	}

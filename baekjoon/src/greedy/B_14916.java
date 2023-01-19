@@ -1,4 +1,4 @@
-package week1_1;
+package greedy;
 
 import java.io.*;
 
