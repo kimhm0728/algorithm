@@ -3,7 +3,7 @@ package bfs;
 import java.util.*;
 import java.io.*;
 
-public class B_2206 {
+public class B_2206 { // 27m
 	static int[][] dir = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 	static int N, M;
 	static int[][] board;
