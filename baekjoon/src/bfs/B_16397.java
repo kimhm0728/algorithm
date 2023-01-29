@@ -3,7 +3,7 @@ package bfs;
 import java.util.*;
 import java.io.*;
 
-public class B_16397 {
+public class B_16397 { // 31m
 	static int N, T, G;
 	static boolean[] visit;
 	static int answer = -1;
