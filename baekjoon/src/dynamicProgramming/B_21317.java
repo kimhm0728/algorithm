@@ -25,32 +25,16 @@ public class B_21317 {
 
 		K = Integer.parseInt(br.readLine());
 
-		dp[0][0] = dp[0][1] = energy[0][0];
-		dp[1][0] = dp[1][1] = Math.min(energy[0][0] + energy[1][0], energy[1][1]);
-
-		System.out.println(getMin(N - 2, 1));
-	}
-
-	// 매우 큰 점프가 가능한 경우라면 jump가 1, 가능하지 않으면 0
-	static int getMin(int n, int jump) {
-		if(dp[n][jump] == null) {
-			if(n < 3) {
-				if(jump == 0)
-					dp[n][jump] = Math.min(getMin(n - 1, 0) + energy[n][0], getMin(n - 2, 0) + energy[n][1]);
-				else
-					dp[n][jump] = Math.min(getMin(n - 1, 1) + energy[n][0], 
-							Math.min(getMin(n - 2, 1) + energy[n][1], K));
-			}
-			else {
-				if(jump == 0)
-					dp[n][jump] = Math.min(getMin(n - 1, 0) + energy[n][0], getMin(n - 2, 0) + energy[n][1]);
-				else
-					dp[n][jump] = Math.min(getMin(n - 1, 1) + energy[n][0], 
-							Math.min(getMin(n - 2, 1) + energy[n][1], getMin(n - 3, 0) + K));
-			}
+		dp[0][0] = dp[0][1] = 0;
+		dp[1][0] = dp[1][1] = energy[0][0];
+		dp[2][0] = dp[2][1] = Math.min(energy[0][0] + energy[1][0], energy[0][1]);
+		
+		for(int i=3;i<N;i++) {
+			dp[i][0] = Math.min(dp[i - 1][0] + energy[i - 1][0], dp[i - 2][0] + energy[i - 2][1]);
+			dp[i][1] = Math.min(Math.min(dp[i - 1][1] + energy[i - 1][0], dp[i - 2][1] + energy[i - 2][1]), dp[i - 3][0] + K);
 		}
-
-		return dp[n][jump];
+		
+		System.out.println(Math.min(dp[N - 1][0], dp[N - 1][1]));
 	}
 
 }
