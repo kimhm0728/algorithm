@@ -5,7 +5,7 @@ import java.io.*;
 
 public class B_2758 {
 	static int N, M;
-	static Long[][] dp;
+	static long[][] dp;
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -20,29 +20,19 @@ public class B_2758 {
 			N = Integer.parseInt(st.nextToken());
 			M = Integer.parseInt(st.nextToken());
 
-			dp = new Long[N + 1][M + 1];
-
-			long answer = 0;
-			for(int j=M;j>0;j--)
-				answer += lotto(N - 1, j);
+			dp = new long[N + 1][M + 1];
+			Arrays.fill(dp[0], (long)1);
 			
-			sb.append(answer).append('\n');
+			for(int j=1;j<=N;j++) {
+				for(int k=1;k<=M;k++)
+					dp[j][k] = dp[j - 1][k / 2] + dp[j][k - 1];
+			}
+			
+			sb.append(dp[N][M]).append('\n');
 		}
 
 		System.out.println(sb);
 	}
-
-	static long lotto(int n, int num) {
-		if(n == 0)
-			return 1;
-
-		if(dp[n][num] == null) {
-			dp[n][num] = (long) 0;
-			for(int i=num/2;i>0;i--) 
-				dp[n][num] += lotto(n - 1, i);
-		}
-
-		return dp[n][num];
-	}
-
+	
 }
+
