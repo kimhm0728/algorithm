@@ -4,47 +4,49 @@ import java.util.*;
 import java.io.*;
 
 public class B_6443 {
-	static char[] arr, order, mx;
-	static boolean[] visit;
-	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-	
+	static StringBuilder sb = new StringBuilder();
+	static int N;
+	static char[] arr;
+
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int N = Integer.parseInt(br.readLine());
+		
+		N = Integer.parseInt(br.readLine());
 		
 		for(int i=0;i<N;i++) {
 			arr = br.readLine().toCharArray();
+			
 			Arrays.sort(arr);
+			sb.append(arr).append('\n');
 			
-			int n = arr.length;
-			visit = new boolean[n];
-			mx = new char[n];
-			order = new char[n];
-			
-			DFS(0, n);
-		}
-		bw.flush();
-		bw.close();
-		br.close();
-	}
-	
-	static void DFS(int depth, int n) throws IOException {
-		if(depth == n) {
-			bw.write(order);
-			bw.write('\n');
-			return;
+			while(next_permutation(arr.length))
+				sb.append(arr).append('\n');
 		}
 		
-		mx[depth] = 0; // 중복 제거
-		for(int i=0;i<n;i++) {
-			if(visit[i] || mx[depth] >= arr[i]) // 중복 제거
-				continue;
-			
-			visit[i] = true;
-			order[depth] = mx[depth] = arr[i];
-			DFS(depth + 1, n);
-			visit[i] = false;
-		}
+		System.out.println(sb);
 	}
+	
+	static boolean next_permutation(int n) {
+		int idx = n - 1;
+		
+		while(idx > 0 && arr[idx] <= arr[idx - 1]) 
+			idx--;
+		
+		if(idx == 0)
+			return false;
+		
+		for(int i=n - 1;i>=idx;i--) {
+			if(arr[idx - 1] < arr[i]) {
+				char temp = arr[i];
+				arr[i] = arr[idx - 1];
+				arr[idx - 1] = temp;
+				break;
+			}
+		}
+		
+		Arrays.sort(arr, idx, n);
+		return true;
+	}
+	
 
 }
