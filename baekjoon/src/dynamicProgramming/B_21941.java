@@ -23,11 +23,9 @@ public class B_21941 {
 		for(int i=0;i<len;i++) {
 			dp[i + 1] = Math.max(dp[i + 1], dp[i] + 1);
 			
-			for(Delete d : arr) {
-				if(str.startsWith(d.str, i)) {
+			for(Delete d : arr) 
+				if(str.startsWith(d.str, i)) 
 					dp[i + d.length] = Math.max(dp[i + d.length], dp[i] + d.score);
-				}
-			}
 		}
 		
 		System.out.println(dp[len]);
