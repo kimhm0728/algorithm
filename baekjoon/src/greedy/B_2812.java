@@ -11,18 +11,24 @@ public class B_2812 {
 		
 		int N = Integer.parseInt(st.nextToken());
 		int K = Integer.parseInt(st.nextToken());
-		String num = br.readLine();
-		StringBuilder answer = new StringBuilder(num);
+		char[] num = br.readLine().toCharArray();
 		
-		char[] arr = num.toCharArray();
-		Arrays.sort(arr);
-		
-		for(int i=0;i<K;i++) {
-			int idx = answer.indexOf(String.valueOf(arr[i]));
-			answer.replace(idx, idx + 1, "*");
+		Deque<Integer> d = new LinkedList<>();
+		for(int i=0;i<N;i++) {
+			int n = num[i] - '0';
+			while(d.size() != 0 && K > 0 && d.peekLast() < n) {
+				K--;
+				d.pollLast();
+			}
+			d.addLast(n);
 		}
 		
-		System.out.println(answer.toString().replaceAll("\\*", ""));
+		StringBuilder sb = new StringBuilder();
+		int size = d.size();
+		for(int i=0;i<size-K;i++)
+			sb.append(d.pollFirst());
+		
+		System.out.println(sb);
 	}
 
 }
