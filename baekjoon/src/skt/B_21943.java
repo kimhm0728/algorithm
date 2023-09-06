@@ -6,12 +6,11 @@ import java.io.*;
 public class B_21943 {
 	static int N;
 	static int[] arr;
-	static boolean[] plus;
-	static int[] order;
+	static char[] oper;
+	static int[] num;
 	static int p, m;
 	static int answer = 0;
-	static ArrayList<Character> oper;
-	static ArrayList<Integer> num;
+	static ArrayList<char[]> oper_list = new ArrayList<>();
 	static boolean[] visit;
 
 	public static void main(String[] args) throws IOException {
@@ -19,9 +18,10 @@ public class B_21943 {
 
 		N = Integer.parseInt(br.readLine());
 		arr = new int[N];
-		plus = new boolean[N - 1];
-		order = new int[N];
-		
+		oper = new char[N - 1];
+		num = new int[N];
+		Arrays.fill(oper, '*');
+
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		for (int i=0;i<N;i++) {
 			arr[i] = Integer.parseInt(st.nextToken());
@@ -32,44 +32,38 @@ public class B_21943 {
 		m = Integer.parseInt(st.nextToken());
 
 		dfs_oper(0, 0, p);
+		dfs_num(0);
 		System.out.println(answer);
 	}
 
 	static void dfs_oper(int idx, int depth, int n) {
 		if (depth == n) {
-			oper = new ArrayList<>();
-			for (int i=0;i<N-1;i++) {
-				oper.add(plus[i] ? '+' : '*');
-			}
-			
+			oper_list.add(oper.clone());
+
 			visit = new boolean[N];
-			dfs_num(0);
 			return;
 		}
 
 		for (int i=idx;i<N-1;i++) {
-			if (plus[i]) continue;
-			plus[i] = true;
+			if (oper[i] == '+') continue;
+			oper[i] = '+';
 			dfs_oper(idx + 1, depth + 1, n);
-			plus[i] = false;
+			oper[i] = '*';
 		}
 	}
 
 	static void dfs_num(int depth) {
 		if (depth == N) {
-			num = new ArrayList<>();
-			for (int i=0;i<N;i++) {
-				num.add(order[i]);
+			for (char[] oper : oper_list) {
+				answer = Math.max(answer, calculate(num[0], 1, oper));
 			}
-			
-			dfs_result(0, N);
 			return;
 		}
 
 		for (int i=0;i<N;i++) {
 			if (visit[i]) continue;
 			visit[i] = true;
-			order[depth] = arr[i];
+			num[depth] = arr[i];
 			dfs_num(depth + 1);
 			visit[i] = false;
 		}
@@ -77,35 +71,17 @@ public class B_21943 {
 
 	}
 
-	static void dfs_result( int idx, int n) {
-		if (n == 1) {
-			answer = Math.max(answer, num.get(0));
-			return;
+	static int calculate(int result, int idx, char[] oper) {
+		for (int i=idx;i<N;i++) {
+			if (oper[i - 1] == '+') {
+				result += num[i];
+			} else {
+				result *= calculate(num[i], i + 1, oper);
+				break;
+			}
 		}
-
-		if (idx + 1 >= n) {
-			dfs_result(0, n);
-			return;
-		}
-
-		for (int i=idx;i<n-1;i++) {
-			int n1 = num.get(i);
-			int n2 = num.get(i + 1);
-			char o = oper.get(i);
-
-			num.set(i, calculate(n1, n2, o));
-			num.remove(i + 1);
-			oper.remove(i);
-
-			dfs_result(i, n - 1);
-			num.set(i, n1);
-			num.add(i + 1, n2);
-			oper.add(i, o);
-		}
+		
+		return result;
 	}
 
-	static int calculate(int a, int b, char o) {
-		if (o == '+') return a + b;
-		return a * b;
-	}
 }
