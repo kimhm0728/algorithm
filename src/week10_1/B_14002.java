@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 public class B_14002 {
 	static int[] arr;
 	static int[] d;
-	static String[] str
+	static String[] str;
 	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
