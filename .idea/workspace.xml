@@ -78,7 +78,8 @@
       <workItem from="1701253240182" duration="6486000" />
       <workItem from="1701346993148" duration="8986000" />
       <workItem from="1701428544139" duration="10185000" />
-      <workItem from="1701501053597" duration="4795000" />
+      <workItem from="1701501053597" duration="4956000" />
+      <workItem from="1701596332806" duration="4946000" />
     </task>
     <servers />
   </component>
@@ -143,6 +144,11 @@
             <option name="lambda-ordinal" value="-10" />
           </properties>
           <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/kotlinsource/B_1461.kt</url>
+          <line>15</line>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
