@@ -43,6 +43,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/kimhm/pre-course/kotlin-menu&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -51,7 +52,14 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Kotlin.B_14889Kt">
+    <configuration name="B_14889Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="kotlinsource.B_14889Kt" />
+      <module name="baekjoon" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="B_16562Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="kotlinsource.B_16562Kt" />
       <module name="baekjoon" />
@@ -61,6 +69,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Kotlin.B_14889Kt" />
         <item itemvalue="Kotlin.B_16562Kt" />
       </list>
     </recent_temporary>
@@ -79,7 +88,9 @@
       <workItem from="1701346993148" duration="8986000" />
       <workItem from="1701428544139" duration="10185000" />
       <workItem from="1701501053597" duration="4956000" />
-      <workItem from="1701596332806" duration="4946000" />
+      <workItem from="1701596332806" duration="5827000" />
+      <workItem from="1702368933370" duration="663000" />
+      <workItem from="1702887150193" duration="2139000" />
     </task>
     <servers />
   </component>
@@ -149,6 +160,11 @@
           <url>file://$PROJECT_DIR$/src/kotlinsource/B_1461.kt</url>
           <line>15</line>
           <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/kotlinsource/B_14889.kt</url>
+          <line>25</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
