@@ -1,18 +1,24 @@
 package kotlinsource.dp
 
-fun main() {
-    val div = 9901
-    val n = System.`in`.bufferedReader().readLine().toInt()
-    val arr = Array(n) { IntArray(3) }
-    arr[0][0] = 1
-    arr[0][1] = 1
-    arr[0][2] = 1
+class B_1309 {
+    private val div = 9901
+    private lateinit var dp: Array<IntArray>
 
-    for (idx in 1 until n) {
-        arr[idx][0] = (arr[idx - 1][0] + arr[idx - 1][1] + arr[idx - 1][2]) % div
-        arr[idx][1] = (arr[idx - 1][0] + arr[idx - 1][2]) % div
-        arr[idx][2] = (arr[idx - 1][0] + arr[idx - 1][1]) % div
+    operator fun invoke() {
+        val n = System.`in`.bufferedReader().readLine().toInt()
+        dp = Array(n) { IntArray(3) }
+        dp[0].fill(1)
+
+        for (idx in 1 until n) {
+            dp[idx][0] = (dp[idx - 1][0] + dp[idx - 1][1] + dp[idx - 1][2]) % div
+            dp[idx][1] = (dp[idx - 1][0] + dp[idx - 1][2]) % div
+            dp[idx][2] = (dp[idx - 1][0] + dp[idx - 1][1]) % div
+        }
+
+        print((dp[n - 1][0] + dp[n - 1][1] + dp[n - 1][2]) % div)
     }
+}
 
-    println((arr[n - 1][0] + arr[n - 1][1] + arr[n - 1][2]) % 9901)
+fun main() {
+    B_1309()()
 }
