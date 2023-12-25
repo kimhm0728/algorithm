@@ -1,4 +1,4 @@
-package kotlinsource
+package kotlinsource.dp
 
 fun main() = with(System.`in`.bufferedReader()) {
     val t = readLine().toInt()
