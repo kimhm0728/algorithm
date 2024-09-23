@@ -59,37 +59,37 @@
       <recent name="C:\Users\kimhm\git\baekjoon\src\kotlinsource\dp" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Kotlin.B_1309Kt">
     <configuration name="B_1309Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="kotlinsource.dp.B_1309Kt" />
+      <option name="MAIN_CLASS_NAME" value="kotlin.dp.B_1309Kt" />
       <module name="baekjoon" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="B_1446Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="kotlinsource.dp.B_1446Kt" />
+      <option name="MAIN_CLASS_NAME" value="kotlin.dp.B_1446Kt" />
       <module name="baekjoon" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="B_14889Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="kotlinsource.B_14889Kt" />
+      <option name="MAIN_CLASS_NAME" value="kotlin.practice.B_14889Kt" />
       <module name="baekjoon" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="B_14940Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="kotlinsource.B_14940Kt" />
+      <option name="MAIN_CLASS_NAME" value="kotlin.practice.B_14940Kt" />
       <module name="baekjoon" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="B_16562Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="kotlinsource.B_16562Kt" />
+      <option name="MAIN_CLASS_NAME" value="kotlin.practice.B_16562Kt" />
       <module name="baekjoon" />
       <method v="2">
         <option name="Make" enabled="true" />
