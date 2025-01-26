@@ -1,45 +1,41 @@
 fun main() = with(System.`in`.bufferedReader()) {
     val (n, m) = readLine().split(" ").map { it.toInt() }
-    val arr = Array(n) { "" }
-    var len = 0
-    repeat(n) {
-        arr[it] = readLine()
-        len += arr[it].length
-    }
-    val lines = "_".repeat((m - len) / (n - 1))
-    val additionalLines = lines + "_"
-    var additionalCount = (m - len) % (n - 1)
+    val arr = Array(n) { readLine() }
+    val len = arr.sumOf { it.length }
+    val short = "_".repeat((m - len) / (n - 1))
+    val long = short + "_"
+    var cnt = (m - len) % (n - 1)
 
-    val additionalPosition = HashSet<Int>()
-    if (additionalCount > 0) {
+    val pos = HashSet<Int>()
+    if (cnt > 0) {
         for (i in 1..<n) {
             if (arr[i][0].isLowerCase()) {
-                additionalPosition.add(i - 1)
-                additionalCount--
-                if (additionalCount == 0) {
+                pos.add(i - 1)
+                cnt--
+                if (cnt == 0) {
                     break
                 }
             }
         }
     }
-    if (additionalCount > 0) {
+    if (cnt > 0) {
         for (i in n - 1 downTo 0) {
             if (arr[i][0].isUpperCase()) {
-                additionalPosition.add(i - 1)
-                additionalCount--
-            }
-            if (additionalCount == 0) {
-                break
+                pos.add(i - 1)
+                cnt--
+                if (cnt == 0) {
+                    break
+                }
             }
         }
     }
 
     val sb = StringBuilder(arr[0])
     for (i in 0..n - 2) {
-        if (additionalPosition.contains(i)) {
-            sb.append(additionalLines)
+        if (pos.contains(i)) {
+            sb.append(long)
         } else {
-            sb.append(lines)
+            sb.append(short)
         }
         sb.append(arr[i + 1])
     }
