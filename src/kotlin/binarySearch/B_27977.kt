@@ -23,14 +23,17 @@ fun canGoToSchool(list: List<Int>, l: Int, k: Int, b: Int): Boolean {
     var count = 0 // 충전 횟수
     var now = 0
     while (true) {
-        if (count > k) {
+        if (count > k) { // 최대 충전 횟수를 넘어선 경우
             return false
         }
-        if (now + b >= l) {
+        if (now + b >= l) { // 학교에 등교
             return true
         }
         val result = binarySearch(list, now + b)
-        if (result == -1) {
+        if (result == -1) { // 충전소를 만나기 전에 배터리 소진된 경우
+            return false
+        }
+        if (now == list[result]) { // 같은 충전소를 또 방문한 경우
             return false
         }
         now = list[result]
@@ -38,6 +41,7 @@ fun canGoToSchool(list: List<Int>, l: Int, k: Int, b: Int): Boolean {
     }
 }
 
+// 가장 가까운 충전소 반환
 // 하한, x와 같으면 s 반환, 다르면 s-1 반환
 fun binarySearch(list: List<Int>, x: Int): Int {
     var s = 0
